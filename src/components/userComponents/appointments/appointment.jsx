@@ -90,10 +90,10 @@ function Appointment() {
                                 <p>Health issues :</p>
                             </div>
                             <div className="col-7">
-                                <p>{userData.userName?userData.userName:' '}</p>
+                                <p>{userData.userName?userData.userName:'NA'}</p>
                                 <p>{userData?.age}</p>
-                                <p>{userData.gender?userData.gender:' '}</p>
-                                <p>{userData.address?userData.address:' '}</p>
+                                <p>{userData.gender?userData.gender:'NA'}</p>
+                                <p>{userData.address?userData.address:'NA'}</p>
                                 <textarea name="issues" id="" value={issues} onChange={(e) => setIssues(e.target.value)} className='form-control' cols="30" rows="5" placeholder='Enter your health issues here...' />
                             </div>
                         </div>
