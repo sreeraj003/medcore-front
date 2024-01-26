@@ -12,7 +12,7 @@ function Payment() {
 
     const userToken = localStorage.getItem('userToken')
     const appData = useSelector(state => state.appointment.appointment)
-    const amount = appData.fee + (appData.fee * 0.1)
+    const amount = parseInt(appData.fee + (Math.floor(parseInt(parseInt(appData.fee) * 0.1))))
 
     useEffect(() => {
         if (!appData || isNaN(appData.fee)) {
@@ -30,7 +30,6 @@ function Payment() {
             } else {
 
                 if (payment) {
-                    console.log(appData);
                     await axios.post(import.meta.env.VITE_BASE_URL + `bookslot`, appData, {
                         headers: {
                             Authorization: `Bearer ${userToken}`
