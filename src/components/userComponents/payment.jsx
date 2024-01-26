@@ -79,7 +79,7 @@ function Payment() {
                                 {appData.date} <br />
                                 {appData.time} <br />
                                 {appData.fee} <br />
-                                {appData.fee * 0.1} <br />
+                                {Math.floor(appData.fee * 0.1)} <br />
                                 {amount}/-
                             </div>
                             <div className="col-12 mt-5 text-center">
