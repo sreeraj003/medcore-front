@@ -137,7 +137,7 @@ function SetProfile() {
                         ) : docData.image ? (
                             <img
                                 width={'200px'}
-                                src={import.meta.env.VITE_BASE_URL + `images/${docData.image}`}
+                                src={docData.image}
                                 alt="profile"
                             />
                         ) : (
@@ -303,7 +303,7 @@ function SetProfile() {
                                                 className='me-2 mt-2'
                                                 width={'100px'}
                                                 height={'80px'}
-                                                src={import.meta.env.VITE_BASE_URL + `images/${doc}`}
+                                                src={doc}
                                                 alt=''
                                             />
                                             <button key={index + '.' + index}

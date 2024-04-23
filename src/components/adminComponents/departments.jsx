@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import DataTables from "../dataTables"
 import axios from "axios"
 import { validateCapitalLetter } from "../validator"
+import Loader from "../loader"
 
 function Departments() {
   const [departmentList, setDepartList] = useState([])
@@ -51,7 +52,8 @@ function Departments() {
         setTimeout(() => {
           setStatus('')
         }, 4000)
-      } else {
+      } else {  
+        
         setDepartList((prevDepartments) =>
           prevDepartments.map((department) => {
             if (department._id === row._id) {
@@ -59,6 +61,7 @@ function Departments() {
                 ...department,
                 isBlocked: !department.isBlocked,
               };
+
             }
             return department;
           })
@@ -85,7 +88,15 @@ function Departments() {
     },
     {
       name: "Action",
-      cell: row => <button className="btn btn-success" onClick={() => blockDepartment(row)}>{row.isBlocked == false ? "Block" : "Unblock"}</button>
+      cell: row => <button className="btn btn-success depBtn" onClick={(e) => {
+        if(e.currentTarget.innerText == "Block"){
+          e.currentTarget.innerText = "Unblock"
+        }else if(e.currentTarget.innerText=="Unblock"){
+          e.currentTarget.innerText = "Block"
+        }
+        blockDepartment(row)
+        
+      }}>{(row.isBlocked == false ? "Block" : "Unblock")}</button>
     }
   ]
 
@@ -189,8 +200,12 @@ function Departments() {
           onChange={handleSearch}
           placeholder="Search..."
           className="form-control w-25 mb-2"
-        />
+        />{
+          filteredData?
         <DataTables columns={columns} title='Departments' data={filteredData} />
+        :
+        <Loader></Loader>
+        }
       </div>
     </>
   )

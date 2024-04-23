@@ -12,7 +12,6 @@ View.propTypes = {
 }
 
 function View({ user, setSelected, value }) {
-
     const [msg, setMsg] = useState('')
     const [blockButton, setBlockButton] = useState('')
     const [reason, setReason] = useState('')
@@ -151,7 +150,7 @@ function View({ user, setSelected, value }) {
                             <div className='text-center '>
                                 {
                                     user?.image ?
-                                        <img width={'200px'} src={import.meta.env.VITE_BASE_URL + `images/${user.image}`} alt="sdf" />
+                                        <img width={'200px'} src={user.image} alt="sdf" />
                                         :
                                         <img width={'200px'} src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="dedf" />
                                 }
@@ -195,7 +194,7 @@ function View({ user, setSelected, value }) {
                                                                     className='me-2 mt-2'
                                                                     width={'100px'}
                                                                     height={'80px'}
-                                                                    src={import.meta.env.VITE_BASE_URL + `images/${doc}`}
+                                                                    src={doc}
                                                                     alt=''
                                                                 />
                                                                 <button key={index + '.' + index}

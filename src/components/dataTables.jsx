@@ -15,15 +15,19 @@ function DataTables(props) {
     return (
 
         <Suspense fallback={<Loader />}>
-            <DataTable
+            {
+               
+                <DataTable
                 style={{ zIndex: '-1' }}
                 columns={props.columns}
                 data={props.data}
                 fixedHeader
                 highlightOnHover
                 pagination
-
-            />
+                
+                />
+                
+            }
         </Suspense>
     )
 }

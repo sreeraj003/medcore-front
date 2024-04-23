@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import DoctorCard from '../doctorCard';
 import { BsSearch } from 'react-icons/bs'
+import Loader from '../../loader';
 
 function PageStructure() {
     const [docData, setDocData] = useState([]);
@@ -101,7 +102,9 @@ function PageStructure() {
                     {isSearch ? (
                         <DoctorCard docData={filteredData} />
                     ) : (
-                        <DoctorCard docData={docData} />
+                        docData.length!=0 ?
+                            <DoctorCard docData={docData} />
+                            : <Loader />
                     )}
                 </div>
             </div>

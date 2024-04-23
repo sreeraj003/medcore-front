@@ -19,7 +19,7 @@ function DoctorCard({ docData }) {
     dispatch(setDoc(data))
     history('/appointments')
   }
-  console.log(docData);
+  console.log(import.meta.env.VITE_BASE_URL);
 
   return (
     <>
@@ -28,7 +28,7 @@ function DoctorCard({ docData }) {
           docData.map((el, index) => (
             <div className="m-3 card" style={{ width: '12rem', minHeight: '20rem' }} key={index}>
               <div className='m-auto' style={{ width: '100%', height: '10rem' }}>
-                <img style={{ width: '100%', height: '10rem' }} src={import.meta.env.VITE_BASE_URL + `images/${el.image}`} className="card-img-top" alt="..." />
+                <img style={{ width: '100%', height: '10rem' }} src={el.image} className="card-img-top" alt="..." />
               </div>
               <div className="card-body mb-0 ps-2" style={{ textAlign: "left", maxWidth: "13rem", left: 0 }}>
                 <h5 className='text-dark'>{el.name}</h5>

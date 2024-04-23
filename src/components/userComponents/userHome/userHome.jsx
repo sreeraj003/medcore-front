@@ -2,6 +2,7 @@ import axios from 'axios';
 import './userHome.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from "../../loader"
 
 function Home() {
 
@@ -33,7 +34,7 @@ function Home() {
         <h3>Departments Available</h3>
         <p>You can select the department you need to checkout.</p>
         <div className="row">
-          {departments && departments.map(dep => (
+          {departments ? departments.map(dep => (
             <div className="col-md-3 text-center  col-sm-4 col-6 h-25" key={dep._id}>
               <div className='card mt-3  mb-3' >
                 <img className=' depImage ' src={dep.image} alt="" />
@@ -41,6 +42,8 @@ function Home() {
               </div>
             </div>
           ))
+          :
+          <Loader />
           }
         </div>
       </div>

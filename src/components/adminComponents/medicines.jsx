@@ -12,7 +12,7 @@ function Medicines() {
   const [createStatus, setStatus] = useState('')
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('')
-  const [err,setErr] = useState('')
+  const [err, setErr] = useState('')
 
   const departmentData = useCallback(async () => {
     await axios.get(import.meta.env.VITE_BASE_URL + 'admin/medicines', {
@@ -100,11 +100,11 @@ function Medicines() {
       console.log(doseData);
       const isValid = validateCapitalLetter(newMed)
       if (isValid) {
-        if(cost.toString()<0){
+        if (cost.toString() < 0) {
           setErr('please enter proper cost')
           return
         }
-        if(dose.toString()<0){
+        if (dose.toString() < 0) {
           setErr('please enter proper dose')
           return
         }
@@ -148,8 +148,8 @@ function Medicines() {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {
-              err?
-              <div className="alert">{err}</div>:''
+              err ?
+                <div className="alert">{err}</div> : ''
             }
             <div className="modal-body">
               <label htmlFor="depName ">Medicine Name</label>
@@ -192,32 +192,20 @@ function Medicines() {
         {
           createStatus == "error" ?
             <div className="alert alert-danger" role="alert">
-              There was an error! cannot create depaprtment.
+              There was an error! cannot create Medicine.
             </div>
             : createStatus == "success" ?
               <div className="alert alert-success" role="alert">
-                Department created successfully.
+                Medicine created successfully.
               </div>
               : createStatus === 'exist' ?
                 <div className="alert alert-danger" role="alert">
-                  Department already exist.
+                  Medicine already exist.
                 </div>
-                : createStatus === 'capLetter' ?
-                  <div className="alert alert-danger" role="alert">
-                    First letter of department should be capital.
-                  </div>
-                  : createStatus === 'validate' ?
-                    <div className="alert alert-danger" role="alert">
-                      Please enter valid Details
-                    </div>
-                    : createStatus === 'exist' ?
-                      <div className="alert alert-danger" role="alert">
-                        Medicine already exist.
-                      </div>
-                      : ''
+                : ''
 
         }
-        <h3>Departments</h3>
+        <h3>Medicines</h3>
         <input
           type="text"
           value={search}
